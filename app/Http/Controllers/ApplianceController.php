@@ -6,6 +6,7 @@ use App\Models\Appliance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreApplianceRequest;
+use App\Http\Requests\UpdateApplianceRequest;
 
 class ApplianceController extends Controller
 {
@@ -62,9 +63,9 @@ class ApplianceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Appliance $appliance)
     {
-        //
+        return view('appliances.edit', compact('appliance'));
     }
 
     /**
@@ -74,9 +75,11 @@ class ApplianceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateApplianceRequest $request, Appliance $appliance)
     {
-        //
+        $appliance->update($request->validated());
+
+        return redirect()->route('appliances.index');
     }
 
     /**
@@ -85,8 +88,10 @@ class ApplianceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Appliance $appliance)
     {
-        //
+        $appliance->delete();
+
+        return redirect()->route('appliances.index');
     }
 }

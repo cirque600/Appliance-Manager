@@ -6,8 +6,8 @@
     </x-slot>
 
     <div>
-        <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
-            <div class="block mb-8">
+        
+            <div class="min-h-screen flex items-center justify-center bg-gray-100">
                 <a href="{{ route('appliances.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
             </div>
             <div class="flex flex-col">
@@ -63,6 +63,6 @@
             <div class="block mt-8">
                 <a href="{{ route('appliances.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
             </div>
-        </div>
+        
     </div>
 </x-app-layout>

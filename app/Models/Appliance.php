@@ -23,5 +23,6 @@ class Appliance extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    
+    
 }
