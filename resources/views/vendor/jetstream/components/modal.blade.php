@@ -30,7 +30,6 @@ $maxWidth = [
         nextFocusableIndex() { return (this.focusables().indexOf(document.activeElement) + 1) % (this.focusables().length + 1) },
         prevFocusableIndex() { return Math.max(0, this.focusables().indexOf(document.activeElement)) -1 },
     }"
-<<<<<<< HEAD
     x-init="$watch('show', value => {
         if (value) {
             document.body.classList.add('overflow-y-hidden');
@@ -38,19 +37,13 @@ $maxWidth = [
             document.body.classList.remove('overflow-y-hidden');
         }
     })"
-=======
->>>>>>> 5f8cfc6af5b89d570e773770d8905e262570ef94
     x-on:close.stop="show = false"
     x-on:keydown.escape.window="show = false"
     x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
     x-on:keydown.shift.tab.prevent="prevFocusable().focus()"
     x-show="show"
     id="{{ $id }}"
-<<<<<<< HEAD
     class="jetstream-modal fixed inset-0 overflow-y-auto px-4 py-6 z-50 sm:px-0"
-=======
-    class="fixed top-0 inset-x-0 px-4 pt-6 z-50 sm:px-0 sm:flex sm:items-top sm:justify-center"
->>>>>>> 5f8cfc6af5b89d570e773770d8905e262570ef94
     style="display: none;"
 >
     <div x-show="show" class="fixed inset-0 transform transition-all" x-on:click="show = false" x-transition:enter="ease-out duration-300"
@@ -62,11 +55,7 @@ $maxWidth = [
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
     </div>
 
-<<<<<<< HEAD
     <div x-show="show" class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full {{ $maxWidth }} sm:mx-auto"
-=======
-    <div x-show="show" class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full {{ $maxWidth }}"
->>>>>>> 5f8cfc6af5b89d570e773770d8905e262570ef94
                     x-transition:enter="ease-out duration-300"
                     x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
