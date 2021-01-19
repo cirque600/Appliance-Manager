@@ -4,35 +4,65 @@
             Edit Appliance
         </h2>
     </x-slot>
+    <div>
+      <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="block mb-8">
+          <a href="{{ route('appliances.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
+      </div>
+          <div class="mt-5 md:mt-0 md:col-span-2">
+              <form method="POST" action="{{ route('appliances.update', $appliance->id) }}">
+                  @csrf
+                  @method('PUT')
+                  <div class="shadow overflow-hidden sm:rounded-md">
+                      <div class="px-4 py-5 bg-white sm:p-6">
+                          <label for="name" class="block font-medium text-sm text-gray-700">Name</label>
+                          <input type="text" name="name" id="name" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                                 value="{{ old('name', $appliance->name) }}" />
+                          @error('name')
+                              <p class="text-sm text-red-600">{{ $message }}</p>
+                          @enderror
+                      </div>
 
-    <div class="wrapper px-2 w-full">
-        <form action="{{ route('appliances.update', $appliance->id) }}" method="POST" class="max-w-sm bg-gray-100 px-3 py-5 rounded shadow-lg my-10 m-auto">
-            @method('PUT')
-            @csrf
-           <div class="flex flex-col space-y-3">
-              <div class="flex items-center bg-white border border-gray-100 rounded">
-                <input id="name" class="w-full py-2 px-1 placeholder-indigo-400 outline-none placeholder-opacity-50 form-control @error('name') is-invalid @enderror" type="text" name="name"" value="{{ $appliance->name }}" required autofocus autocomplete="name" />
-              </div>
+                      <div class="px-4 py-5 bg-white sm:p-6">
+                        <label for="manufacturer" class="block font-medium text-sm text-gray-700">Manufacturer</label>
+                        <input type="text" name="manufacturer" id="manufacturer" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                               value="{{ old('name', $appliance->manufacturer) }}" />
+                        @error('manufacturer')
+                            <p class="text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-              <div class="flex items-center bg-white border border-gray-100 rounded">
-                <input id="manufacturer" class="w-full py-2 px-1 placeholder-indigo-400 outline-none placeholder-opacity-50 form-control @error('manufacturer') is-invalid @enderror" type="text" name="manufacturer"   value="{{ $appliance->manufacturer }}" required autofocus autocomplete="manufacturer" />
-              </div>
+                    <div class="px-4 py-5 bg-white sm:p-6">
+                      <label for="purchase_date" class="block font-medium text-sm text-gray-700">Purchase Date</label>
+                      <input type="date" name="purchase_date" id="purchase_date" type="date" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                             value="{{ old('name', $appliance->purchase_date) }}" />
+                      @error('purchase_date')
+                          <p class="text-sm text-red-600">{{ $message }}</p>
+                      @enderror
+                  </div>
 
-              <div class="flex items-center bg-white border border-gray-100 rounded">
-                <input id="purchase_date" class="w-full py-2 px-1 placeholder-indigo-400 outline-none placeholder-opacity-50 form-control @error('purchase_date') is-invalid @enderror" type="date" name="purchase_date"   value="{{ $appliance->purchase_date }}" required autofocus autocomplete="purchase_date" />
-              </div>
-
-              <div class="flex items-center bg-white border border-gray-100 rounded">
-                <input id="serial_num" class="w-full py-2 px-1 placeholder-indigo-400 outline-none placeholder-opacity-50 form-control @error('serial_num') is-invalid @enderror" type="text" name="serial_num"   value="{{ $appliance->serial_num }}" required autofocus autocomplete="serial_num" />
-              </div>
-
-              <button type="submit"class="text-white bg-indigo-500 px-4 py-2 rounded">
-                 {{ __('Save Appliance') }}
-              </button>
-           </div>
-        </form>
-     </div>
-
+                  <div class="px-4 py-5 bg-white sm:p-6">
+                    <label for="serial_num" class="block font-medium text-sm text-gray-700">Serial Number</label>
+                    <input type="text" name="serial_num" id="serial_num" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                           value="{{ old('name', $appliance->serial_num) }}" />
+                    @error('serial_num')
+                        <p class="text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+                     
+                          
+                      <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
+                          <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                              Save
+                          </button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  
+    
     
     
 </x-app-layout>
