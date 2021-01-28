@@ -27,7 +27,7 @@ class UpdateApplianceRequest extends FormRequest
             'name' => 'required',
             'manufacturer' => 'required',
             'purchase_date' => 'required',
-            'serial_num' => 'required'
+            
         ];
     }
 }

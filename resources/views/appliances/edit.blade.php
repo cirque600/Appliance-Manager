@@ -26,7 +26,7 @@
                       <div class="px-4 py-5 bg-white sm:p-6">
                         <label for="manufacturer" class="block font-medium text-sm text-gray-700">Manufacturer</label>
                         <input type="text" name="manufacturer" id="manufacturer" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                               value="{{ old('name', $appliance->manufacturer) }}" />
+                               value="{{ old('manufacturer', $appliance->manufacturer) }}" />
                         @error('manufacturer')
                             <p class="text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -35,7 +35,7 @@
                     <div class="px-4 py-5 bg-white sm:p-6">
                       <label for="purchase_date" class="block font-medium text-sm text-gray-700">Purchase Date</label>
                       <input type="date" name="purchase_date" id="purchase_date" type="date" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                             value="{{ old('name', $appliance->purchase_date) }}" />
+                             value="{{ old('purchase_date', $appliance->purchase_date) }}" />
                       @error('purchase_date')
                           <p class="text-sm text-red-600">{{ $message }}</p>
                       @enderror
@@ -44,7 +44,7 @@
                   <div class="px-4 py-5 bg-white sm:p-6">
                     <label for="serial_num" class="block font-medium text-sm text-gray-700">Serial Number</label>
                     <input type="text" name="serial_num" id="serial_num" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                           value="{{ old('name', $appliance->serial_num) }}" />
+                           value="{{ old('serial_num', $appliance->serial_num) }}" readonly />
                     @error('serial_num')
                         <p class="text-sm text-red-600">{{ $message }}</p>
                     @enderror

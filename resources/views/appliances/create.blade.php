@@ -42,9 +42,9 @@
                                         
                                         <label for="serial_num" class="block font-medium text-sm text-gray-700">Serial Number</label>
                                         <input type="text" name="serial_num" id="serial_num" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                                               value="{{ old('serial.num', '') }}" />
+                                               value="{{ old('serial_num', '') }}" />
                                         @error('serial_num')
-                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                            <p class="text-sm text-red-600">{{ "The serial number entered was not found on our database" }}</p>
                                         @enderror
                                     </div>
 

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreApplianceRequest;
 use App\Http\Requests\UpdateApplianceRequest;
+use App\Models\Serial;
+
 
 class ApplianceController extends Controller
 {
@@ -41,8 +43,9 @@ class ApplianceController extends Controller
     public function store(StoreApplianceRequest $request)
     {   
         
-        $appliance = Appliance::create($request->validated() + ['user_id' => auth()->id()]);
-
+        Appliance::create($request->validated() + ['user_id' => auth()->id()]);
+        
+        
         return redirect()->route('appliances.index');
     }
 

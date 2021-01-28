@@ -27,7 +27,8 @@ class StoreApplianceRequest extends FormRequest
             'name' => 'required',
             'manufacturer' => 'required',
             'purchase_date' => 'required',
-            'serial_num' => 'required',
+            'serial_num' => 'required|exists:serials,serial',
+            'serials.appliance_id' => 'nullable'
         ];
     }
 }

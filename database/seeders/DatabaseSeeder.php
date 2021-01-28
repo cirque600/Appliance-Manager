@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Serial;
 use App\Models\Appliance;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
@@ -25,5 +26,9 @@ class DatabaseSeeder extends Seeder
         $appliances = Appliance::factory()
                     ->count(3)
                     ->create();
+
+        $serials = Serial::factory()
+                            ->count(3)
+                            ->create();
     }
 }

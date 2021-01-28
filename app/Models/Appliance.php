@@ -24,5 +24,8 @@ class Appliance extends Model
         return $this->belongsTo(User::class);
     }
     
-    
+    public function serial()
+    {
+        return $this->hasOne(Serial::class);
+    }
 }
