@@ -9,16 +9,8 @@ class Serial extends Model
 {
     use HasFactory;
 
-    protected $fillable = 
-    [
-        'appliance_id'
-    ];
+    protected $fillable = ['appliance_id', 'is_used'];
 
-    protected $hidden = 
-    [
-        'serial'
-        
-    ];
 
     public function appliance()
     {

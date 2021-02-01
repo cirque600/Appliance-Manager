@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreApplianceRequest;
 use App\Http\Requests\UpdateApplianceRequest;
 use App\Models\Serial;
-
+use Illuminate\Support\Facades\App;
 
 class ApplianceController extends Controller
 {
@@ -43,8 +43,12 @@ class ApplianceController extends Controller
     public function store(StoreApplianceRequest $request)
     {   
         
-        Appliance::create($request->validated() + ['user_id' => auth()->id()]);
-        
+        $appliance = Appliance::create($request->validated() + ['user_id' => auth()->id()]);
+
+
+        $serial = Serial::updateOrCreate(['serial' => $appliance->serial_num ],['appliance_id' => $appliance->id, 'is_used' => 1 ]);
+
+    
         
         return redirect()->route('appliances.index');
     }
@@ -81,6 +85,8 @@ class ApplianceController extends Controller
     public function update(UpdateApplianceRequest $request, Appliance $appliance)
     {
         $appliance->update($request->validated());
+
+        
 
         return redirect()->route('appliances.index');
     }

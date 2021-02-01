@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
 
 class StoreApplianceRequest extends FormRequest
 {
@@ -28,7 +29,9 @@ class StoreApplianceRequest extends FormRequest
             'manufacturer' => 'required',
             'purchase_date' => 'required',
             'serial_num' => 'required|exists:serials,serial',
-            'serials.appliance_id' => 'nullable'
+            
+            
+            
         ];
     }
 }
