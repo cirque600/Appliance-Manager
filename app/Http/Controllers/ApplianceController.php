@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreApplianceRequest;
 use App\Http\Requests\UpdateApplianceRequest;
 use App\Models\Serial;
+use App\Models\User;
 use Illuminate\Support\Facades\App;
 
 class ApplianceController extends Controller
@@ -41,15 +42,15 @@ class ApplianceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreApplianceRequest $request)
-    {   
-        
+    {
+
         $appliance = Appliance::create($request->validated() + ['user_id' => auth()->id()]);
 
 
         $serial = Serial::updateOrCreate(['serial' => $appliance->serial_num ],['appliance_id' => $appliance->id, 'is_used' => 1 ]);
 
-    
-        
+
+
         return redirect()->route('appliances.index');
     }
 
@@ -61,7 +62,12 @@ class ApplianceController extends Controller
      */
     public function show(Appliance $appliance)
     {
-        return view('appliances.show', compact('appliance'));
+           if($appliance->user_id == auth()->id()){
+               return view('appliances.show', compact('appliance'));
+           }
+
+           return redirect()->route('appliances.index');
+
     }
 
     /**
@@ -72,7 +78,10 @@ class ApplianceController extends Controller
      */
     public function edit(Appliance $appliance)
     {
-        return view('appliances.edit', compact('appliance'));
+        if($appliance->user_id == auth()->id()){
+            return view('appliances.edit', compact('appliance'));
+        }
+        return redirect()->route('appliances.index');
     }
 
     /**
@@ -86,7 +95,7 @@ class ApplianceController extends Controller
     {
         $appliance->update($request->validated());
 
-        
+
 
         return redirect()->route('appliances.index');
     }
